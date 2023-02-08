@@ -11,10 +11,10 @@ class BookList extends Component {
     query: "",
   };
   // Creazione funzione, in questo caso metodo che andrà a prendere il valore input
-  filterBookList(ev) {
-    console.log(ev.target.value);
+  filterBookList(e) {
+    console.log(e.target.value);
     this.setState({
-      query: ev.target.value,
+      query: e.target.value,
     });
   }
 
@@ -26,8 +26,8 @@ class BookList extends Component {
         </div>
         <Row>
           {horror
-            .filter((book) => {
-              return book.title
+            .filter((el) => {
+              return el.title
                 .toLowerCase()
                 .includes(this.state.query.toLowerCase());
             })
