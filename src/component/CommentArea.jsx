@@ -1,11 +1,10 @@
 import { Component } from "react";
-import { Card } from "react-bootstrap";
+import CommentList from "./CommentList";
 
 class CommentArea extends Component {
   state = {
-    selected: false,
+    comments: [],
   };
-
   componentDidMount = () => {
     this.getData();
   };
@@ -27,6 +26,9 @@ class CommentArea extends Component {
       if (res.ok) {
         const data = await res.json();
         console.log(data);
+        this.setState({
+          comments: data,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -36,7 +38,7 @@ class CommentArea extends Component {
   render() {
     return (
       <>
-        <Card.Text>Ciao</Card.Text>
+        {this.state.comments && <CommentList comments={this.state.comments} />}
       </>
     );
   }
